@@ -1,0 +1,139 @@
+.wm-page {
+  padding-top: 90px;
+  background: #f7faf7;
+  min-height: 100vh;
+}
+
+/* HERO */
+.wm-hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: #e8f4ea;
+}
+
+.wm-hero h1 {
+  font-size: 42px;
+  color: #1b5e20;
+  margin-bottom: 12px;
+}
+
+.wm-hero p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  color: #3b5f44;
+}
+
+/* CONTENT */
+.wm-content {
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+  display: grid;
+  gap: 30px;
+}
+
+.wm-box {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.wm-box h2 {
+  color: #1b5e20;
+  margin-bottom: 12px;
+}
+
+.wm-box p,
+.wm-box li {
+  color: #444;
+  line-height: 1.7;
+}
+
+.wm-box ul {
+  padding-left: 18px;
+}
+
+/* CONNECT SECTION */
+.wm-connect {
+  text-align: center;
+  background: #eaf6ee;
+  padding: 50px 25px;
+  border-radius: 16px;
+}
+
+.wm-connect h3 {
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.wm-connect p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: #3e5f46;
+}
+
+/* FORM */
+.wm-form {
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.wm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.wm-form input,
+.wm-form select,
+.wm-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.wm-form input:focus,
+.wm-form select:focus,
+.wm-form textarea:focus {
+  border-color: #4caf50;
+}
+
+/* BUTTON */
+.wm-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #66cc66, #2e8b57);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.wm-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #4caf50, #1f6f3f);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .wm-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wm-hero h1 {
+    font-size: 30px;
+  }
+}

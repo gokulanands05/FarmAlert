@@ -1,0 +1,198 @@
+.footer-brand h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #9be15d;
+  position: relative;
+}
+
+/* small green line under FarmAlert */
+.footer-brand h2::after {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 3px;
+  background: linear-gradient(90deg, #7bdc65, #2e7d32);
+  margin-top: 6px;
+  border-radius: 10px;
+}
+
+
+/* footer social section */
+
+/* ================= SOCIAL ICONS ================= */
+
+/* SOCIAL ICONS WITH GLOW */
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 25px;
+  height: 50px;
+  border-radius: 10%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9be15d;
+  font-size: 28px;
+
+  transition: 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+.social-icon:hover {
+  transform: translateY(-4px);
+}
+
+/* Individual glow colors */
+.social-icon.instagram:hover {
+  color: #e1306c; 
+  box-shadow: 0 0 12px #e1306c;
+  width: 10px;
+  height: 20px;
+}
+
+.social-icon.linkedin:hover {
+  color: #0a66c2;
+  box-shadow: 0 0 12px #0a66c2;
+   width: 10px;
+  height: 20px;
+}
+
+.social-icon.twitter:hover {
+  color: #1da1f2;
+  box-shadow: 0 0 12px #1da1f2;
+   width: 10px;
+  height: 20px;
+}
+
+/* ======================================== footer links  */
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links {
+  color: #cfd8dc;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease;
+}
+
+/* Glow underline */
+.footer-links::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #7bdc65;
+  box-shadow: 0 0 8px #7bdc65;
+  transition: 0.3s ease;
+}
+
+.footer-links:hover {
+  color: #9be15d;
+  text-shadow: 0 0 6px rgba(155, 225, 93, 0.8);
+}
+
+.footer-links:hover::after {
+  width: 100%;
+}
+
+/* Individual platform glow (optional extra polish) */
+.footer-links.service:hover {
+  text-shadow: 0 0 8px #e1306c;
+}
+
+.footer-links.capabilities:hover {
+  text-shadow: 0 0 8px #0a66c2;
+}
+
+.footer-links.products:hover {
+  text-shadow: 0 0 8px #1da1f2;
+}
+
+.footer-links.about:hover {
+  text-shadow: 0 0 8px #1da1f2;
+}
+
+.footer-links.contact:hover {
+  text-shadow: 0 0 8px #1da1f2;
+}
+
+
+/* ==========================================================footer-contact  */
+ /* Quick Links & Get In Touch hover effect */
+.footer-links a:hover,
+.footer-contact p:hover {
+  color: #9be15d;
+  transform: translateX(6px);
+  transition: 0.25s ease;
+}
+.footer-links a,
+.footer-contact p {
+  transition: 0.25s ease;
+}
+/* underline base */
+.footer-links a,
+.footer-contact p {
+  position: relative;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+
+/* underline line */
+.footer-links a::after,
+.footer-contact p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+   
+  bottom: -4px;
+  width: 0%;
+  height: px;
+  background: linear-gradient(90deg, #7bdc65, #2e7d32);
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+/* hover effect */
+.footer-links a:hover,
+.footer-contact p:hover {
+  color: #9be15d;
+}
+
+.footer-links a:hover::after,
+.footer-contact p:hover::after {
+  width: 100%;
+}
+
+
+.footer-policy a:hover,
+.footer-contact p:hover {
+  color: #9be15d;
+}
+
+.footer-policy a:hover::after,
+.footer-contact p:hover::after {
+  width: 100%;
+}
+
+.footer-policy {
+  display: flex;
+  gap: 20px;
+}
+
+
+ 

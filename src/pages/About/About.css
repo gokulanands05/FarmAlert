@@ -1,0 +1,136 @@
+.about-page {
+  padding-top: 90px;
+  min-height: 100vh;
+  background: #f6faf7;
+}
+
+/* HERO */
+.about-hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  color: #1b5e20;
+  margin-bottom: 15px;
+}
+
+.about-hero p {
+  max-width: 650px;
+  margin: auto;
+  font-size: 1.1rem;
+  color: #2e7d32;
+}
+
+/* INFO CARDS */
+.about-content {
+  padding: 60px 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.about-card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.about-card h3 {
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.about-card p {
+  color: #555;
+  line-height: 1.7;
+}
+
+/* FEEDBACK */
+.feedback-section {
+  background: #eaf6ee;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.feedback-section h2 {
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.feedback-desc {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  color: #3e5f46;
+}
+
+.feedback-form {
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+  border-color: #4caf50;
+}
+
+.feedback-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #66cc66, #2e8b57);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.feedback-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #4caf50, #1f6f3f);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .feedback-row {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero h1 {
+    font-size: 2.3rem;
+  }
+}

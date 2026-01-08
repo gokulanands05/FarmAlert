@@ -1,0 +1,122 @@
+.dos-page {
+  padding-top: 90px;
+  background: #f6fbf7;
+}
+
+/* HERO */
+.dos-hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(120deg, #dff4e3, #edf8f0);
+}
+
+.dos-hero h1 {
+  font-size: 42px;
+  color: #1b5e20;
+  margin-bottom: 12px;
+}
+
+.dos-hero p {
+  max-width: 760px;
+  margin: auto;
+  font-size: 18px;
+  color: #3d5f4a;
+}
+
+/* CONTENT */
+.dos-content {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.dos-content h2,
+.dos-content h3 {
+  color: #1b5e20;
+  margin-bottom: 14px;
+}
+
+.dos-content p {
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.dos-content ul {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.dos-content li {
+  margin-bottom: 10px;
+  color: #2f5e3a;
+}
+
+/* CONNECT FORM */
+.dos-contact {
+  background: #ffffff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.dos-contact h2 {
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.dos-contact p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.dos-form {
+  max-width: 520px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row input {
+  flex: 1;
+}
+
+.dos-form input,
+.dos-form select,
+.dos-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.dos-form input:focus,
+.dos-form select:focus,
+.dos-form textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6fdc6f, #2e8b57);
+  color: #0f2e1c;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #5ccf70, #256f47);
+}
