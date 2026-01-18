@@ -23,6 +23,32 @@
   color: #3d5f4a;
 }
 
+.access-btn-wrapper {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.access-btn {
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 128, 0, 0.25);
+}
+
+/* 🔥 Hover effect */
+.access-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 128, 0, 0.4);
+  background: linear-gradient(135deg, #1b5e20, #4caf50);
+}
+
+
 /* CONTENT */
 .dos-content {
   max-width: 900px;

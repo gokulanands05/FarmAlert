@@ -1,0 +1,41 @@
+.analysis-page {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.analysis-form {
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.analysis-form input,
+.analysis-form select {
+  padding: 12px;
+  font-size: 15px;
+}
+
+.analysis-form button {
+  padding: 14px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 30px;
+}
+
+.demand {
+  color: red;
+  font-weight: bold;
+}
+
+.oversupply {
+  color: goldenrod;
+  font-weight: bold;
+}

@@ -7,6 +7,7 @@ import AgriAuth from "./components/AgriAuth/AgriAuth";
 import ScrollToTop from "./components/ScrollToTop";
 import Connect from "./pages/Connect/Connect";
 import DemandOversupply from "./pages/DemandOversupply/DemandOversupply";
+import DemandAnalysis from "./pages/DemandAnalysis/DemandAnalysis";
 import WasteMonetization from "./pages/WasteMonetization/WasteMonetization";
 import WarehouseRouting from "./pages/WarehouseRouting/WarehouseRouting";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
@@ -27,6 +28,8 @@ function App() {
         <Route path="/get-started" element={<AgriAuth />} />
          <Route path="/connect" element={<Connect />} />
          <Route path="/demand-oversupply" element={<DemandOversupply />} />
+         <Route path="/demand-analysis" element={<DemandAnalysis />} />
+
          <Route path="/waste-monetization" element={<WasteMonetization />} />
          <Route path="/warehouse-routing" element={<WarehouseRouting />} />
          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
