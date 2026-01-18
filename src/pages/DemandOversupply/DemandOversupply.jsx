@@ -1,9 +1,11 @@
 import "./DemandOversupply.css";
+import { useNavigate } from "react-router-dom";
 
 const DemandOversupply = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="dos-page">
-
       {/* HERO SECTION */}
       <section className="dos-hero">
         <h1>Demand Oversupply Management</h1>
@@ -11,6 +13,15 @@ const DemandOversupply = () => {
           Smart detection and handling of market oversupply to protect farmers
           from losses and improve price stability.
         </p>
+
+        <div className="access-btn-wrapper">
+          <button
+            className="access-btn"
+            onClick={() => navigate("/demand-analysis")}
+          >
+            Access
+          </button>
+        </div>
       </section>
 
       {/* MAIN CONTENT */}
