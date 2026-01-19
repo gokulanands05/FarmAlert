@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-}
+ }
 .back-btn {
   position: absolute;
   top: 20px;
@@ -56,6 +56,7 @@
   width: 820px;
   max-width: 100%;
   min-height: 500px;
+  margin-top: 30px;
 }
 
 /* ================= FORMS ================= */
@@ -229,6 +230,7 @@
   justify-content: center;
   background: linear-gradient(to right, #e8f5e9, #c8e6c9);
   animation: fadePage 0.6s ease;
+  /* padding-top: 30px; */
 }
 
 

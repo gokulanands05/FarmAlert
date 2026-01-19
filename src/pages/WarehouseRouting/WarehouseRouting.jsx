@@ -1,92 +1,79 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./WarehouseRouting.css";
+import axios from "axios";
+import { submitStorageRequest } from "../../services/requestApi";
 
-const INDIA_LOCATIONS = [
-  { city: "Coimbatore", state: "Tamil Nadu", country: "India", lat: 11.0168, lng: 76.9558 },
-  { city: "Chennai", state: "Tamil Nadu", country: "India", lat: 13.0827, lng: 80.2707 },
-  { city: "Ahmedabad", state: "Gujarat", country: "India", lat: 23.0225, lng: 72.5714 },
-  { city: "Bangalore", state: "Karnataka", country: "India", lat: 12.9716, lng: 77.5946 },
-  { city: "Trichy", state: "Tamil Nadu", country: "India", lat: 10.7905, lng: 78.7047 },
-  { city: "Salem", state: "Tamil Nadu", country: "India", lat: 11.6643, lng: 78.146 },
-];
-
-const warehouseData = [
-  {
-    id: 1,
-    name: "GreenField Cold Storage",
-    city: "Chennai",
-    area: "Tambaram",
-    distance: "2.3 km",
-    storage: "Cold Storage",
-    price: "₹2.5 / kg / month",
-    capacity: "Available",
-    position: [12.9249, 80.1000],
-  },
-  {
-    id: 2,
-    name: "Agro Dry Warehouse",
-    city: "Chennai",
-    area: "Perungalathur",
-    distance: "3.1 km",
-    storage: "Dry Storage",
-    price: "₹1.4 / kg / month",
-    capacity: "Limited",
-    position: [12.9116, 80.0836],
-  },
-  {
-    id: 3,
-    name: "Central Market Warehouse",
-    city: "Chennai",
-    area: "Koyambedu",
-    distance: "9 km",
-    storage: "Mixed",
-    price: "Price not available",
-    capacity: "Full",
-    position: [13.0695, 80.2088],
-  },
-];
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const WarehouseRouting = () => {
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [filtered, setFiltered] = useState(warehouseData);
+  const [warehouses, setWarehouses] = useState([]);
   const [error, setError] = useState("");
   const [mapCenter, setMapCenter] = useState([13.0827, 80.2707]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (!query) {
-      setSuggestions([]);
-      return;
-    }
+  // 🔹 MODAL STATES
+  const [showForm, setShowForm] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
-    const q = query.toLowerCase();
-    const matches = INDIA_LOCATIONS.filter(loc =>
-      loc.city.toLowerCase().startsWith(q)
-    );
+  const [formData, setFormData] = useState({
+    userName: "",
+    phone: "",
+    city: "",
+    message: ""
+  });
 
-    setSuggestions(matches);
-  }, [query]);
+  // 🔹 SEARCH
+  const handleSearch = async () => {
+    if (!query.trim()) return;
 
-  const handleSearch = () => {
-    const result = warehouseData.filter(w =>
-      w.city.toLowerCase().includes(query.toLowerCase())
-    );
-
-    if (result.length === 0) {
-      setFiltered([]);
-      setError("No warehouses found. Try nearby locations.");
-    } else {
+    try {
+      setLoading(true);
       setError("");
-      setFiltered(result);
-    }
 
-    const city = INDIA_LOCATIONS.find(
-      l => l.city.toLowerCase() === query.toLowerCase()
-    );
-    if (city) {
-      setMapCenter([city.lat, city.lng]);
+      const res = await axios.get(
+        `${API_BASE}/api/warehouses`,
+        { params: { city: query } }
+      );
+
+      if (res.data.length === 0) {
+        setWarehouses([]);
+        setError("No warehouses found for this location");
+        return;
+      }
+
+      setWarehouses(res.data);
+      setMapCenter([res.data[0].lat, res.data[0].lng]);
+    } catch (err) {
+      console.error(err);
+      setError("Backend error. Server not responding.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🔹 SUBMIT REQUEST
+  const handleSubmitRequest = async () => {
+    try {
+      await submitStorageRequest({
+        ...formData,
+        warehouseId: selectedWarehouse._id
+      });
+
+      alert("Request sent successfully ✅");
+      setShowForm(false);
+
+      setFormData({
+        userName: "",
+        phone: "",
+        city: "",
+        message: ""
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Request failed ❌");
     }
   };
 
@@ -96,10 +83,7 @@ const WarehouseRouting = () => {
       {/* HERO */}
       <section className="wr-hero">
         <h1>Finding Warehouses</h1>
-        <p>
-          Smart warehouse discovery with location, pricing, distance and
-          availability all inside FarmAlert.
-        </p>
+        <p>Smart warehouse discovery powered by FarmAlert</p>
       </section>
 
       {/* SEARCH */}
@@ -107,45 +91,16 @@ const WarehouseRouting = () => {
         <div className="wr-search">
           <input
             type="text"
-            placeholder="Search city (eg: Coimbatore)"
+            placeholder="Search city, area for warehouses..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <button onClick={handleSearch}>Search</button>
-
-          {suggestions.length > 0 && (
-            <ul className="wr-suggestions">
-              {suggestions.map((loc, i) => (
-                <li
-                  key={i}
-                  onClick={() => {
-                    setQuery(loc.city);
-                    setSuggestions([]);
-                  }}
-                >
-                  {loc.city}, {loc.state}, {loc.country}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </div>
 
-{error && (
-  <div className="wr-error-box">
-    <p className="wr-error-title">No warehouses found 😕</p>
-    <p className="wr-error-text">
-      We couldn’t find warehouses in this location.
-    </p>
-
-    <div className="wr-error-suggest">
-      Try nearby locations:
-      <span>Chennai</span>
-      <span>Bangalore</span>
-      <span>Coimbatore</span>
-    </div>
-  </div>
-)}
+      {/* ERROR */}
+      {error && <p className="wr-error-box">{error}</p>}
 
       {/* MAP */}
       <section className="wr-map">
@@ -155,8 +110,8 @@ const WarehouseRouting = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {filtered.map(w => (
-            <Marker key={w.id} position={w.position}>
+          {warehouses.map(w => (
+            <Marker key={w._id} position={[w.lat, w.lng]}>
               <Popup>
                 <strong>{w.name}</strong><br />
                 {w.area}, {w.city}<br />
@@ -168,25 +123,87 @@ const WarehouseRouting = () => {
         </MapContainer>
       </section>
 
-      {/* CARDS */}
+      {/* LIST */}
       <section className="wr-list">
-        {filtered.map(w => (
-          <div key={w.id} className="wr-card">
+        {loading && <p>Loading...</p>}
+
+        {warehouses.map(w => (
+          <div key={w._id} className="wr-card">
             <h3>{w.name}</h3>
-
-            <span className={`wr-badge ${w.capacity.toLowerCase()}`}>
-              {w.capacity}
-            </span>
-
             <p><b>Location:</b> {w.area}, {w.city}</p>
-            <p><b>Distance:</b> {w.distance}</p>
             <p><b>Storage:</b> {w.storage}</p>
             <p><b>Price:</b> {w.price}</p>
 
-            <button className="wr-btn">Request Storage</button>
+            <button
+              className="wr-btn"
+              onClick={() => {
+                setSelectedWarehouse(w);
+                setFormData({ ...formData, city: w.city });
+                setShowForm(true);
+              }}
+            >
+              Request Storage
+            </button>
           </div>
         ))}
       </section>
+
+      {/* 🔹 MODAL FORM */}
+      {showForm && (
+        <div className="wr-modal">
+          <div className="wr-modal-box">
+
+            <h3>Request Storage</h3>
+            <p className="wr-modal-sub">
+              {selectedWarehouse?.name}
+            </p>
+
+            <input
+              placeholder="Your Name"
+              value={formData.userName}
+              onChange={(e) =>
+                setFormData({ ...formData, userName: e.target.value })
+              }
+            />
+
+            <input
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+            />
+
+            <input
+              placeholder="City"
+              value={formData.city}
+              onChange={(e) =>
+                setFormData({ ...formData, city: e.target.value })
+              }
+            />
+
+            <textarea
+              placeholder="Message (eg: Need cold storage for 2 months)"
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+            />
+
+            <button className="wr-btn" onClick={handleSubmitRequest}>
+              Submit Request
+            </button>
+
+            <button
+              className="wr-cancel"
+              onClick={() => setShowForm(false)}
+            >
+              Cancel
+            </button>
+
+          </div>
+        </div>
+      )}
 
     </div>
   );
