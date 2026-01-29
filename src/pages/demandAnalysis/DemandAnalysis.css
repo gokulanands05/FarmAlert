@@ -1,6 +1,18 @@
 .analysis-page {
-  padding-top: 100px;
+  padding: 100px 20px 50px;
   text-align: center;
+}
+
+.analysis-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.analysis-page > p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
 }
 
 .analysis-form {
@@ -15,6 +27,46 @@
 .analysis-form select {
   padding: 12px;
   font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-area-wrapper {
+  position: relative;
+}
+
+.search-area-wrapper input {
+  width: 100%;
+}
+
+.area-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+  background-color: #f5f5f5;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
 }
 
 .analysis-form button {
@@ -24,6 +76,12 @@
   border: none;
   font-weight: 600;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.analysis-form button:hover {
+  background: #1b5e20;
 }
 
 .result {
@@ -38,4 +96,203 @@
 .oversupply {
   color: goldenrod;
   font-weight: bold;
+}
+
+.map-container {
+  margin: 30px auto;
+  height: 400px;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-container .leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.city-info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.city-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-left: 5px solid #2e7d32;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.city-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.city-card h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.city-card p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.city-card .label {
+  font-weight: 600;
+  color: #333;
+  display: inline-block;
+  width: 120px;
+}
+
+.city-card .value {
+  color: #666;
+}
+
+.city-card .demand-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.demand-badge.high {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.demand-badge.medium {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.areas-list {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.areas-list strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+.areas-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.area-tag {
+  display: inline-block;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.legend {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.map-section {
+  margin-top: 50px;
+  padding: 30px 20px;
+  background: #f9f9f9;
+}
+
+.map-section h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.map-section > p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.maps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.map-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-card h3 {
+  padding: 15px 20px;
+  background: #2e7d32;
+  color: white;
+  margin: 0;
+  font-size: 18px;
+}
+
+.map-wrapper {
+  height: 350px;
+  width: 100%;
+}
+
+.map-wrapper .leaflet-container {
+  height: 100%;
+  width: 100%;
 }

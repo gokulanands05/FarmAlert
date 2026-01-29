@@ -16,6 +16,8 @@ import WasteMonetization from "./pages/WasteMonetization/WasteMonetization";
 import WarehouseRouting from "./pages/WarehouseRouting/WarehouseRouting";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./pages/Terms/Terms";
+import Profile from "./pages/Profile";
+
 
 /* 🔐 Admin Pages */
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -36,20 +38,20 @@ function App() {
             <>
               <Header />
 
-      <Routes>
-       
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/get-started" element={<AgriAuth />} />
+                <Route path="/connect" element={<Connect />} />
+                <Route path="/demand-oversupply" element={<DemandOversupply />} />
+                <Route path="/demand-analysis" element={<DemandAnalysis />} />
+                <Route path="/waste-monetization" element={<WasteMonetization />} />
+                <Route path="/warehouse-routing" element={<WarehouseRouting />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/profile" element={<Profile />} />
 
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/get-started" element={<AgriAuth />} />
-         <Route path="/connect" element={<Connect />} />
-         <Route path="/demand-oversupply" element={<DemandOversupply />} />
-         <Route path="/waste-monetization" element={<WasteMonetization />} />
-         <Route path="/warehouse-routing" element={<WarehouseRouting />} />
-         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<Terms />} />
-
-      </Routes>
+              </Routes>
 
               <Footer />
             </>

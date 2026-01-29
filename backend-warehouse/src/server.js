@@ -6,6 +6,7 @@ import warehouseRoutes from "./routes/warehouse.routes.js";
 import requestRoutes from "./routes/request.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import storageRequestRoutes from "./routes/storageRequest.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 dotenv.config();
 connectDB();
@@ -24,6 +25,7 @@ app.use("/api/requests", requestRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api", storageRequestRoutes);
 app.use("/api/storage-requests", storageRequestRoutes);
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

@@ -13,6 +13,15 @@ const DemandOversupply = () => {
           Smart detection and handling of market oversupply to protect farmers
           from losses and improve price stability.
         </p>
+
+        <div className="access-btn-wrapper">
+          <button
+            className="access-btn"
+            onClick={() => navigate("/demand-analysis")}
+          >
+            Access
+          </button>
+        </div>
       </section>
 
       {/* MAIN CONTENT */}
